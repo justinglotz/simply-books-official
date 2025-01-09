@@ -12,11 +12,17 @@ const getBooks = (uid) =>
       },
     })
       .then((response) => response.json())
-      .then((data) => resolve(Object.values(data)))
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
       .catch(reject);
   });
 
-// TODO: DELETE BOOK
+// DELETE BOOK
 const deleteBook = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${firebaseKey}.json`, {
@@ -30,7 +36,7 @@ const deleteBook = (firebaseKey) =>
       .catch(reject);
   });
 
-// TODO: GET SINGLE BOOK
+// GET SINGLE BOOK
 const getSingleBook = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${firebaseKey}.json`, {
@@ -44,7 +50,7 @@ const getSingleBook = (firebaseKey) =>
       .catch(reject);
   });
 
-// TODO: CREATE BOOK
+// CREATE BOOK
 const createBook = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books.json`, {
@@ -59,7 +65,7 @@ const createBook = (payload) =>
       .catch(reject);
   });
 
-// TODO: UPDATE BOOK
+// UPDATE BOOK
 const updateBook = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${payload.firebaseKey}.json`, {
@@ -74,6 +80,8 @@ const updateBook = (payload) =>
       .catch(reject);
   });
 
+// GET BOOKS BY AUTHOR
+// Uses the firebaseKey of the author
 const getBooksByAuthor = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books.json?orderBy="author_id"&equalTo="${firebaseKey}"`, {
@@ -87,6 +95,7 @@ const getBooksByAuthor = (firebaseKey) =>
       .catch(reject);
   });
 
+// GET BOOKS ON SALE
 const booksOnSale = (uid) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books.json?orderBy="uid"&equalTo="${uid}"`, {
