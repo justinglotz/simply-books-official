@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'react-bootstrap/esm/Image';
+import { PropTypes } from 'prop-types';
 
 export default function CartCard({ obj }) {
   return (
