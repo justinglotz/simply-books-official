@@ -20,7 +20,10 @@ function BookCard({ bookObj, onUpdate }) {
 
   const handleAddToCart = () => {
     addToCart(bookObj).then(({ name }) => {
-      const patchPayload = { firebaseKey: name };
+      const patchPayload = {
+        firebaseKey: name,
+        bookFirebaseKey: bookObj.firebaseKey,
+      };
       updateCartItem(patchPayload);
     });
   };
@@ -52,7 +55,9 @@ function BookCard({ bookObj, onUpdate }) {
         <Button variant="danger" onClick={deleteThisBook} className="m-2">
           DELETE
         </Button>
-        <Button onClick={handleAddToCart}>ADD TO CART</Button>
+        <Button className="btn btn-success" onClick={handleAddToCart}>
+          ADD TO CART
+        </Button>
       </Card.Body>
     </Card>
   );
