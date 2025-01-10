@@ -112,4 +112,21 @@ const booksOnSale = (uid) =>
       .catch(reject);
   });
 
-export { getBooks, createBook, booksOnSale, deleteBook, getSingleBook, updateBook, getBooksByAuthor };
+// PUBLIC BOOKS
+const getPublicBooks = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/books.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const isPublic = Object.values(data).filter((item) => item.public);
+        resolve(isPublic);
+      })
+      .catch(reject);
+  });
+
+export { getBooks, createBook, booksOnSale, deleteBook, getSingleBook, updateBook, getBooksByAuthor, getPublicBooks };
