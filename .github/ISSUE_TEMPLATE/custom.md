@@ -1,13 +1,4 @@
 ---
-name: Custom issue template
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: Issue Template
 about: Describe the issue that we are looking to solve.
 title: ''
