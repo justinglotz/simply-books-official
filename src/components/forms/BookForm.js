@@ -44,7 +44,7 @@ function BookForm({ obj = initialState }) {
     if (obj.firebaseKey) {
       updateBook(formInput).then(() => router.push(`/book/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, uid: user.uid, price: Number(formInput.price) };
       createBook(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateBook(patchPayload).then(() => {
@@ -70,7 +70,7 @@ function BookForm({ obj = initialState }) {
 
       {/* PRICE INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Book Price" className="mb-3">
-        <Form.Control type="text" placeholder="Enter price" name="price" value={formInput.price} onChange={handleChange} required />
+        <Form.Control type="number" placeholder="Enter price" name="price" value={formInput.price} onChange={handleChange} required />
       </FloatingLabel>
 
       {/* AUTHOR SELECT  */}
@@ -131,7 +131,7 @@ BookForm.propTypes = {
   obj: PropTypes.shape({
     description: PropTypes.string,
     image: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     sale: PropTypes.bool,
     public: PropTypes.bool,
     title: PropTypes.string,

@@ -26,7 +26,7 @@ export default function ViewAuthor({ params }) {
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-row">
           {authorDetails.books?.length === 0 ? (
-            <h2>This author has no books.</h2>
+            <h4>This author has no books.</h4>
           ) : (
             authorDetails.books?.map((book) => (
               <div key={book.firebaseKey} className="mx-2">
