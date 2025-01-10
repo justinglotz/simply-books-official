@@ -6,14 +6,23 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteBook } from '../api/bookData';
+import { addToCart, updateCartItem } from '../api/cartData';
 
 function BookCard({ bookObj, onUpdate }) {
   // FOR DELETE, WE NEED TO REMOVE THE BOOK AND HAVE THE VIEW RERENDER,
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
+
   const deleteThisBook = () => {
     if (window.confirm(`Delete ${bookObj.title}?`)) {
       deleteBook(bookObj.firebaseKey).then(() => onUpdate());
     }
+  };
+
+  const handleAddToCart = () => {
+    addToCart(bookObj).then(({ name }) => {
+      const patchPayload = { firebaseKey: name };
+      updateCartItem(patchPayload);
+    });
   };
 
   return (
@@ -43,6 +52,7 @@ function BookCard({ bookObj, onUpdate }) {
         <Button variant="danger" onClick={deleteThisBook} className="m-2">
           DELETE
         </Button>
+        <Button onClick={handleAddToCart}>ADD TO CART</Button>
       </Card.Body>
     </Card>
   );

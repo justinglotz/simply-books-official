@@ -28,6 +28,9 @@ export default function NavBar() {
               Profile
             </Link>
           </Nav>
+          <Button variant="success" href="/cart">
+            View Cart
+          </Button>
           <Button variant="danger" onClick={signOut}>
             Sign Out
           </Button>
