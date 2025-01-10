@@ -4,7 +4,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/utils/context/authContext';
-import { getCart } from '@/api/cartData';
+import { deleteCartItem, getCart } from '@/api/cartData';
 import CartCard from '@/components/CartCard';
 import Loading from '@/components/Loading';
 
@@ -26,8 +26,22 @@ function Cart() {
   }, []);
 
   if (isLoading) {
-    return <Loading />; // Show loading spinner or message
+    return <Loading />; // Show loading spinner
   }
+
+  const handleCheckout = () => {
+    if (window.confirm('Are you sure you want to proceed to Checkout?')) {
+      getCart(user.uid)
+        .then((items) => {
+          const deletePromises = items.map((item) => deleteCartItem(item.firebaseKey));
+          return Promise.all(deletePromises);
+        })
+        .then(() => {
+          getCartItems();
+        })
+        .finally(() => setIsLoading(false));
+    }
+  };
 
   const totalPrice = cartItems.reduce((accumulator, item) => accumulator + item.price, 0);
 
@@ -40,7 +54,7 @@ function Cart() {
             <CartCard key={item.firebaseKey} obj={item} onUpdate={getCartItems} />
           ))}
           <h5>Cart Total: ${totalPrice}</h5>
-          <button type="button" className="btn btn-success">
+          <button type="button" className="btn btn-success" onClick={handleCheckout}>
             Checkout
           </button>
         </div>
