@@ -1,5 +1,5 @@
 import React from 'react';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import { PropTypes } from 'react-bootstrap/esm/Image';
 
 export default function CartCard({ obj }) {
   return (
@@ -18,8 +18,8 @@ export default function CartCard({ obj }) {
 }
 
 CartCard.propTypes = {
-  obj: propTypes.shape({
-    title: propTypes.string,
-    price: propTypes.number,
+  obj: PropTypes.shape({
+    title: PropTypes.string,
+    price: PropTypes.number,
   }).isRequired,
 };
