@@ -3,7 +3,7 @@
 
 An app where users can create different vocabulary entries and categories
 
-[View App]((https://jg-simply-books.netlify.app/))
+[View App](https://jg-simply-books.netlify.app/)
 
 ## About the User <!-- This is a scaled down user persona -->
 - The ideal user for this application is someone who needs to remember or study terms and definitions
