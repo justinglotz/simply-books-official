@@ -1,4 +1,4 @@
-# Simply Books  [![Netlify Status](https://api.netlify.com/api/v1/badges/882acd35-2dfc-4369-abed-32f6eb643375/deploy-status)](https://app.netlify.com/sites/stunning-cupcake-ad077a/deploys)
+# Simply Books  [![Netlify Status](https://api.netlify.com/api/v1/badges/526b5141-199e-469d-ab31-1eb6461b9ade/deploy-status)](https://app.netlify.com/sites/jg-simply-books/deploys)
 <!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 
 An app where users can manage their books and authors
