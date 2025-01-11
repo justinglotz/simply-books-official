@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { useAuth } from '@/utils/context/authContext';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { deleteBook } from '../api/bookData';
 import { addToCart, deleteCartItem, getCart, updateCartItem } from '../api/cartData';
 
@@ -37,33 +39,48 @@ function BookCard({ bookObj, onUpdate }) {
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={bookObj.image} alt={bookObj.title} style={{ height: '400px' }} />
-      <Card.Body>
-        <Card.Title>{bookObj.title}</Card.Title>
-        <p className="card-text bold">
-          {bookObj.sale && (
-            <span>
-              SALE
-              <br />
-            </span>
-          )}{' '}
-          ${bookObj.price}
-        </p>
-        {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
-        <Link href={`/book/${bookObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">
-            VIEW
+      <Card.Body className="p-0 d-flex flex-column">
+        <div className="p-3 flex-grow-1">
+          <Card.Title>{bookObj.title}</Card.Title>
+          <p className="card-text bold">
+            {bookObj.sale && (
+              <span>
+                SALE
+                <br />
+              </span>
+            )}{' '}
+            ${bookObj.price}
+          </p>
+        </div>
+        <div className="d-flex flex-column" style={{ marginLeft: '-1px', marginRight: '-1px', marginBottom: '-1px' }}>
+          <Row className="justify-content-between g-0 mx-0">
+            {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
+            <Col className="col-4 p-0">
+              <Link href={`/book/${bookObj.firebaseKey}`} passHref>
+                <Button className="w-100 rounded-0" variant="primary">
+                  VIEW
+                </Button>
+              </Link>
+            </Col>
+            {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
+            <Col className="col-4 p-0">
+              <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
+                <Button className="w-100 rounded-0" variant="info">
+                  EDIT
+                </Button>
+              </Link>
+            </Col>
+            <Col className="col-4 p-0">
+              <Button className="w-100 rounded-0" variant="danger" onClick={deleteThisBook}>
+                DELETE
+              </Button>
+            </Col>
+          </Row>
+          <Button className="btn btn-success w-100 rounded-top-0" onClick={handleAddToCart}>
+            ADD TO CART
           </Button>
-        </Link>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-        <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisBook} className="m-2">
-          DELETE
-        </Button>
-        <Button className="btn btn-success" onClick={handleAddToCart}>
-          ADD TO CART
-        </Button>
+        </div>
+        {/* </Container> */}
       </Card.Body>
     </Card>
   );
