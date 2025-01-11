@@ -5,16 +5,22 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { useAuth } from '@/utils/context/authContext';
 import { deleteBook } from '../api/bookData';
-import { addToCart, updateCartItem } from '../api/cartData';
+import { addToCart, deleteCartItem, getCart, updateCartItem } from '../api/cartData';
 
 function BookCard({ bookObj, onUpdate }) {
+  const { user } = useAuth();
   // FOR DELETE, WE NEED TO REMOVE THE BOOK AND HAVE THE VIEW RERENDER,
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
 
   const deleteThisBook = () => {
     if (window.confirm(`Delete ${bookObj.title}?`)) {
-      deleteBook(bookObj.firebaseKey).then(() => onUpdate());
+      // Delete books from carts before deleting the book
+      getCart(user.uid)
+        .then((cartItems) => cartItems.filter((cartItem) => cartItem.bookFirebaseKey === bookObj.firebaseKey))
+        .then((matchedItems) => matchedItems.forEach((item) => deleteCartItem(item.firebaseKey)))
+        .then(deleteBook(bookObj.firebaseKey).then(() => onUpdate()));
     }
   };
 

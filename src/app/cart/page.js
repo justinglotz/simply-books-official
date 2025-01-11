@@ -7,6 +7,7 @@ import { useAuth } from '@/utils/context/authContext';
 import { deleteCartItem, getCart } from '@/api/cartData';
 import CartCard from '@/components/CartCard';
 import Loading from '@/components/Loading';
+import Link from 'next/link';
 
 function Cart() {
   const [cartItems, setCart] = useState([]);
@@ -60,7 +61,7 @@ function Cart() {
         </div>
       ) : (
         <p>
-          Your cart is empty! <a href="/">View some books</a> to add.
+          Your cart is empty! <Link href="/">View some books</Link> to add.
         </p>
       )}
     </div>
