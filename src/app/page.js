@@ -29,7 +29,7 @@ function Home() {
   return (
     <div className="text-center my-4">
       <Link href="/book/new" passHref>
-        <Button>Add A Book</Button>
+        <Button className="w-25">Add A Book</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {books.map((book) => (

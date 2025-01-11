@@ -19,7 +19,7 @@ function AuthorCard({ authorObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card className={`${authorObj.favorite ? 'border-2 border-warning' : 'border-0'}`} style={{ width: '18rem', margin: '10px' }}>
       <Card.Body className="p-0 d-flex flex-column">
         <div className="p-3 flex-grow-1">
           <Card.Title>
@@ -36,7 +36,7 @@ function AuthorCard({ authorObj, onUpdate }) {
           <p>{authorObj.email}</p>
           {/* DYNAMIC LINK TO VIEW THE AUTHOR DETAILS  */}
         </div>
-        <div className="d-flex flex-row" style={{ marginLeft: '-1px', marginRight: '-1px', marginBottom: '-1px' }}>
+        <div className="d-flex flex-row">
           <Col className="col-4 p-0">
             <Link href={`/author/${authorObj.firebaseKey}`} passHref>
               <Button className="w-100" variant="primary" style={{ borderRadius: '0 0 0 6px' }}>

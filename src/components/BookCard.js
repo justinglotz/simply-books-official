@@ -37,7 +37,7 @@ function BookCard({ bookObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
+    <Card className="border-0" style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={bookObj.image} alt={bookObj.title} style={{ height: '400px' }} />
       <Card.Body className="p-0 d-flex flex-column">
         <div className="p-3 flex-grow-1">
@@ -52,7 +52,7 @@ function BookCard({ bookObj, onUpdate }) {
             ${bookObj.price}
           </p>
         </div>
-        <div className="d-flex flex-column" style={{ marginLeft: '-1px', marginRight: '-1px', marginBottom: '-1px' }}>
+        <div className="d-flex flex-column">
           <Row className="justify-content-between g-0 mx-0">
             {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
             <Col className="col-4 p-0">
