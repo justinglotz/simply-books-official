@@ -3,6 +3,7 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
+// GET ALL BOOKS FOR A SPECIFIC USER
 const getBooks = (uid) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books.json?orderBy="uid"&equalTo="${uid}"`, {
@@ -112,6 +113,23 @@ const booksOnSale = (uid) =>
       .catch(reject);
   });
 
+// GET FAVORITE BOOKS
+const favoriteBooks = (uid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/books.json?orderBy="uid"&equalTo="${uid}"`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const onSale = Object.values(data).filter((item) => item.favorite);
+        resolve(onSale);
+      })
+      .catch(reject);
+  });
+
 // PUBLIC BOOKS
 const getPublicBooks = () =>
   new Promise((resolve, reject) => {
@@ -129,4 +147,4 @@ const getPublicBooks = () =>
       .catch(reject);
   });
 
-export { getBooks, createBook, booksOnSale, deleteBook, getSingleBook, updateBook, getBooksByAuthor, getPublicBooks };
+export { getBooks, createBook, booksOnSale, favoriteBooks, deleteBook, getSingleBook, updateBook, getBooksByAuthor, getPublicBooks };
