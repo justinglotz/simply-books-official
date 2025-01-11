@@ -54,7 +54,7 @@ function Cart() {
           {cartItems.map((item) => (
             <CartCard key={item.firebaseKey} obj={item} onUpdate={getCartItems} />
           ))}
-          <h5>Cart Total: ${totalPrice}</h5>
+          <h5>Cart Total: ${totalPrice.toFixed(2)}</h5>
           <button type="button" className="btn btn-success" onClick={handleCheckout}>
             Checkout
           </button>
