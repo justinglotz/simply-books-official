@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import { deleteCartItem, updateCartItem } from '@/api/cartData';
 import { useAuth } from '../../utils/context/authContext';
 import { getAuthors } from '../../api/authorData';
 import { createBook, updateBook } from '../../api/bookData';
@@ -42,7 +43,10 @@ function BookForm({ obj = initialState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateBook(formInput).then(() => router.push(`/book/${obj.firebaseKey}`));
+      updateBook(formInput)
+        .then(deleteCartItem(obj.firebasKey))
+        .then(updateCartItem)
+        .then(() => router.push(`/book/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid, price: Number(formInput.price) };
       createBook(payload).then(({ name }) => {
