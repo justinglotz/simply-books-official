@@ -29,7 +29,7 @@ function Home() {
   return (
     <div className="text-center my-4">
       <Link href="/author/new" passHref>
-        <Button>Add An Author</Button>
+        <Button className="w-25">Add An Author</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* TODO: map over authors here using BookCard component */}

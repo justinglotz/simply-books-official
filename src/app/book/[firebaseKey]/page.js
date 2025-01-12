@@ -3,17 +3,32 @@
 import React, { useEffect, useState } from 'react';
 import { viewBookDetails } from '@/api/mergedData';
 import PropTypes from 'prop-types';
+import Loading from '@/components/Loading';
 
 export default function ViewBook({ params }) {
   const [bookDetails, setBookDetails] = useState({});
+  const [loading, setLoading] = useState(true);
 
   // grab firebaseKey from url
   const { firebaseKey } = params;
 
   // make call to API layer to get the data
   useEffect(() => {
-    viewBookDetails(firebaseKey).then(setBookDetails);
+    const fetchBookDetails = async () => {
+      try {
+        const data = await viewBookDetails(firebaseKey);
+        setBookDetails(data);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBookDetails();
   }, [firebaseKey]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="mt-5 d-flex flex-wrap">
