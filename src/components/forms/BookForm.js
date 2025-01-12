@@ -43,9 +43,10 @@ function BookForm({ obj = initialState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateBook(formInput)
-        .then(deleteCartItem(obj.firebasKey))
-        .then(updateCartItem)
+      const payload = { ...formInput, uid: user.uid, price: Number(formInput.price), bookFirebaseKey: obj.firebaseKey };
+      updateBook(payload)
+        .then(deleteCartItem(obj.bookFirebaseKey))
+        .then(updateCartItem(payload))
         .then(() => router.push(`/book/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid, price: Number(formInput.price) };
