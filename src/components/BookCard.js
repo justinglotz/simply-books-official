@@ -9,7 +9,7 @@ import { useAuth } from '@/utils/context/authContext';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faEye, faTrashCan, faPenToSquare, faTag } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faEye, faTrashCan, faPenToSquare, faTag, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import Alert from 'react-bootstrap/Alert';
 import { deleteBook } from '../api/bookData';
 import { addToCart, deleteCartItem, getCart, updateCartItem } from '../api/cartData';
@@ -50,6 +50,12 @@ function BookCard({ bookObj, onUpdate }) {
             {bookObj.sale && (
               <Alert variant="info" className="fw-bold p-1 d-inline-block">
                 <FontAwesomeIcon icon={faTag} /> SALE
+                <br />
+              </Alert>
+            )}{' '}
+            {bookObj.public && (
+              <Alert variant="warning" className="fw-bold p-1 d-inline-block">
+                <FontAwesomeIcon icon={faBullhorn} /> PUBLIC
                 <br />
               </Alert>
             )}{' '}
@@ -98,6 +104,7 @@ BookCard.propTypes = {
     sale: PropTypes.bool,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
+    public: PropTypes.bool,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
