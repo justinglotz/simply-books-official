@@ -7,7 +7,8 @@ import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faTrashCan, faPenToSquare, faHeart } from '@fortawesome/free-solid-svg-icons';
+import Alert from 'react-bootstrap/Alert';
 import { deleteAuthorBooks } from '../api/mergedData';
 
 function AuthorCard({ authorObj, onUpdate }) {
@@ -27,15 +28,15 @@ function AuthorCard({ authorObj, onUpdate }) {
           <Card.Title>
             {authorObj.first_name} {authorObj.last_name}
           </Card.Title>
+          <p>{authorObj.email}</p>
           <p className="card-text bold">
             {authorObj.favorite && (
-              <span>
-                FAVORITE
+              <Alert variant="danger" className="fw-bold p-1 d-inline-block">
+                <FontAwesomeIcon icon={faHeart} /> FAVORITE
                 <br />
-              </span>
+              </Alert>
             )}{' '}
           </p>
-          <p>{authorObj.email}</p>
           {/* DYNAMIC LINK TO VIEW THE AUTHOR DETAILS  */}
         </div>
         <div className="d-flex flex-row">

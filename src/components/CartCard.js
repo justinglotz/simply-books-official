@@ -14,7 +14,7 @@ export default function CartCard({ obj, onUpdate }) {
       <div className="card text-white bg-dark my-2">
         <div className="card-body">
           <h5 className="card-title">{obj.title}</h5>
-          <p className="card-text">${obj.price}</p>
+          <p className="card-text">${obj.price.toFixed(2)}</p>
           <button type="button" onClick={deleteThisCartItem} className="btn btn-danger">
             Remove From Cart
           </button>

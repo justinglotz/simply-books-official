@@ -9,7 +9,8 @@ import { useAuth } from '@/utils/context/authContext';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faEye, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faEye, faTrashCan, faPenToSquare, faTag } from '@fortawesome/free-solid-svg-icons';
+import Alert from 'react-bootstrap/Alert';
 import { deleteBook } from '../api/bookData';
 import { addToCart, deleteCartItem, getCart, updateCartItem } from '../api/cartData';
 
@@ -44,14 +45,14 @@ function BookCard({ bookObj, onUpdate }) {
       <Card.Body className="p-0 d-flex flex-column">
         <div className="p-3 flex-grow-1">
           <Card.Title>{bookObj.title}</Card.Title>
-          <p className="card-text bold">
+          <p className="card-text bold m-2">
+            ${bookObj.price.toFixed(2)} <br />
             {bookObj.sale && (
-              <span>
-                SALE
+              <Alert variant="info" className="fw-bold p-1 d-inline-block">
+                <FontAwesomeIcon icon={faTag} /> SALE
                 <br />
-              </span>
+              </Alert>
             )}{' '}
-            ${bookObj.price}
           </p>
         </div>
         <div className="d-flex flex-column">
