@@ -5,6 +5,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { getBooks } from '../api/bookData';
 import { useAuth } from '../utils/context/authContext';
 import BookCard from '../components/BookCard';
@@ -28,15 +30,17 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/book/new" passHref>
-        <Button className="w-25">Add A Book</Button>
-      </Link>
-      <div className="d-flex flex-wrap">
-        {books.map((book) => (
-          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAllTheBooks} />
-        ))}
+        <Link href="/book/new" passHref>
+          <Button className="w-25">
+            <FontAwesomeIcon icon={faPlus} /> Add A Book
+          </Button>
+        </Link>
+        <div className="d-flex flex-wrap">
+          {books.map((book) => (
+            <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAllTheBooks} />
+          ))}
+        </div>
       </div>
-    </div>
   );
 }
 

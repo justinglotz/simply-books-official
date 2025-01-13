@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { deleteAuthorBooks } from '../api/mergedData';
 
 function AuthorCard({ authorObj, onUpdate }) {
@@ -19,7 +21,7 @@ function AuthorCard({ authorObj, onUpdate }) {
   };
 
   return (
-    <Card className={`${authorObj.favorite ? 'border-2 border-warning' : 'border-0'}`} style={{ width: '18rem', margin: '10px' }}>
+    <Card className="border-0" style={{ width: '18rem', margin: '10px' }}>
       <Card.Body className="p-0 d-flex flex-column">
         <div className="p-3 flex-grow-1">
           <Card.Title>
@@ -40,6 +42,7 @@ function AuthorCard({ authorObj, onUpdate }) {
           <Col className="col-4 p-0">
             <Link href={`/author/${authorObj.firebaseKey}`} passHref>
               <Button className="w-100" variant="primary" style={{ borderRadius: '0 0 0 6px' }}>
+                <FontAwesomeIcon icon={faEye} /> <br />
                 VIEW
               </Button>
             </Link>
@@ -48,13 +51,14 @@ function AuthorCard({ authorObj, onUpdate }) {
             {/* DYNAMIC LINK TO EDIT THE AUTHOR DETAILS  */}
             <Link href={`/author/edit/${authorObj.firebaseKey}`} passHref>
               <Button className="w-100 rounded-0" variant="info">
+                <FontAwesomeIcon icon={faPenToSquare} /> <br />
                 EDIT
               </Button>
             </Link>
           </Col>
           <Col className="col-4 p-0">
             <Button className="w-100" variant="danger" onClick={deleteThisAuthor} style={{ borderRadius: '0 0 6px 0' }}>
-              DELETE
+              <FontAwesomeIcon icon={faTrashCan} /> DELETE
             </Button>
           </Col>
         </div>
