@@ -3,6 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTag } from '@fortawesome/free-solid-svg-icons';
 
 function PublicBookCard({ bookObj }) {
   // CARDS TO VIEW PUBLIC BOOKS ON THE LOGIN PAGE
@@ -15,7 +17,7 @@ function PublicBookCard({ bookObj }) {
         <p className="card-text bold">
           {bookObj.sale && (
             <span>
-              SALE
+              <FontAwesomeIcon icon={faTag} /> SALE
               <br />
             </span>
           )}{' '}
