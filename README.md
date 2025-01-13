@@ -1,7 +1,7 @@
 # Simply Books  [![Netlify Status](https://api.netlify.com/api/v1/badges/526b5141-199e-469d-ab31-1eb6461b9ade/deploy-status)](https://app.netlify.com/sites/jg-simply-books/deploys)
 <!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 
-An app where users can manage their books and authors
+A web app where users can manage their books and authors.
 
 [View App](https://jg-simply-books.netlify.app/)
 
@@ -31,6 +31,12 @@ An app where users can manage their books and authors
 
 
 
+## Technologies Used
+- React
+- Next.js
+- Javascript
+- Bootstrap
+- CSS
 
 ## Contributors
 - [Justin Glotzbach]([https://github.com/your-github-url](https://github.com/justinglotz))
