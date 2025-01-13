@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { viewAuthorDetails } from '../../../api/mergedData';
 
 export default function ViewAuthor({ params }) {
@@ -18,8 +20,7 @@ export default function ViewAuthor({ params }) {
   return (
     <>
       <h3 className="mt-3">
-        Name: {authorDetails.first_name} {authorDetails.last_name}
-        {authorDetails.favorite ? ' 🤍' : ''}
+        Name: {authorDetails.first_name} {authorDetails.last_name} {authorDetails.favorite && <FontAwesomeIcon icon={faHeart} className="me-2" />}
       </h3>
       <h3 className="mt-3">Email: {authorDetails.email}</h3>
       <h3 className="mt-3">Books by this author:</h3>
