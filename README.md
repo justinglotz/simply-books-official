@@ -25,6 +25,28 @@ A web app where users can manage their books and authors.
 
 ## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
 
+<img width="1507" alt="Screenshot 2025-01-13 at 7 38 19 AM" src="https://github.com/user-attachments/assets/8a684c9c-640a-439e-8339-6858c7910220" />
+Sign in page
+
+<img width="1509" alt="Screenshot 2025-01-13 at 7 38 59 AM" src="https://github.com/user-attachments/assets/c22c9edd-cff9-4ede-8247-1417a87ec22e" />
+Books page
+
+<img width="1511" alt="Screenshot 2025-01-13 at 7 39 11 AM" src="https://github.com/user-attachments/assets/b15bdcd0-add7-4f0e-8f3a-5dd13fc1e81c" />
+Authors page
+
+<img width="1512" alt="Screenshot 2025-01-13 at 7 39 18 AM" src="https://github.com/user-attachments/assets/acf70f92-d343-4548-849b-9db35d0c7211" />
+Create author
+
+<img width="1511" alt="Screenshot 2025-01-13 at 7 39 30 AM" src="https://github.com/user-attachments/assets/e18d2eb1-faeb-47c0-ae8e-af0dcbfc17ea" />
+Profile page
+
+<img width="1512" alt="Screenshot 2025-01-13 at 7 39 40 AM" src="https://github.com/user-attachments/assets/d90d2227-8b2c-4b36-b2b3-a13ffd7efe3d" />
+Create book form
+
+<img width="1511" alt="Screenshot 2025-01-13 at 7 40 01 AM" src="https://github.com/user-attachments/assets/b3ef4cd1-0149-48dc-a94a-1dc5bf1b0b2e" />
+Cart
+
+
 
 
 
