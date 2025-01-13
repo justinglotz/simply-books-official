@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { useAuth } from '@/utils/context/authContext';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faEye, faTrashCan, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { deleteBook } from '../api/bookData';
 import { addToCart, deleteCartItem, getCart, updateCartItem } from '../api/cartData';
 
@@ -58,6 +60,7 @@ function BookCard({ bookObj, onUpdate }) {
             <Col className="col-4 p-0">
               <Link href={`/book/${bookObj.firebaseKey}`} passHref>
                 <Button className="w-100 rounded-0" variant="primary">
+                  <FontAwesomeIcon icon={faEye} /> <br />
                   VIEW
                 </Button>
               </Link>
@@ -66,18 +69,19 @@ function BookCard({ bookObj, onUpdate }) {
             <Col className="col-4 p-0">
               <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
                 <Button className="w-100 rounded-0" variant="info">
+                  <FontAwesomeIcon icon={faPenToSquare} /> <br />
                   EDIT
                 </Button>
               </Link>
             </Col>
             <Col className="col-4 p-0">
               <Button className="w-100 rounded-0" variant="danger" onClick={deleteThisBook}>
-                DELETE
+                <FontAwesomeIcon icon={faTrashCan} /> DELETE
               </Button>
             </Col>
           </Row>
           <Button className="btn btn-success w-100 rounded-top-0" onClick={handleAddToCart}>
-            ADD TO CART
+            <FontAwesomeIcon icon={faCartShopping} /> ADD TO CART
           </Button>
         </div>
         {/* </Container> */}

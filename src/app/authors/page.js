@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '@/utils/context/authContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { getAuthors } from '../../api/authorData';
 import AuthorCard from '../../components/AuthorCard';
 
@@ -29,7 +31,9 @@ function Home() {
   return (
     <div className="text-center my-4">
       <Link href="/author/new" passHref>
-        <Button className="w-25">Add An Author</Button>
+        <Button className="w-25">
+          <FontAwesomeIcon icon={faPlus} /> Add An Author
+        </Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* TODO: map over authors here using BookCard component */}

@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { signOut } from '../utils/auth';
 
 export default function NavBar() {
@@ -28,11 +30,11 @@ export default function NavBar() {
               Profile
             </Link>
           </Nav>
-          <Button variant="success" href="/cart">
-            View Cart
+          <Button className="mx-2" variant="success" href="/cart">
+            <FontAwesomeIcon icon={faCartShopping} /> View Cart
           </Button>
           <Button variant="danger" onClick={signOut}>
-            Sign Out
+            <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out
           </Button>
         </Navbar.Collapse>
       </Container>
